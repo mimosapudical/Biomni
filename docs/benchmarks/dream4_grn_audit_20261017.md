@@ -1,5 +1,9 @@
 # DREAM4 contribution audit — 2026-10-17
 
+Runtime follow-up: see [round 23](dream4_grn_audit_r23_20261017.md) for repaired
+tooling, exact hook passes, async-test qualifications and the remaining model
+authentication gate. The records below preserve the original audit state.
+
 ## Status and exact provenance
 
 Implementation and offline evaluation are complete. **No PR has been opened.**

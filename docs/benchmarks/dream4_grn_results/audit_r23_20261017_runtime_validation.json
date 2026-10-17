@@ -1,0 +1,145 @@
+{
+	"upstream_sha": "400c1f366b96a35ca253e13c9b06c5076af41d65",
+	"tested_commit": "528de05be101d33a7bb6460ce5de7be1f60c13b7",
+	"checks": [
+		{
+			"label": "focused",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-m",
+				"pytest",
+				"tests/test_dream4_grn.py",
+				"-q"
+			],
+			"exit_code": 0,
+			"stdout": "..................................                                       [100%]\n34 passed in 1.07s\n",
+			"stderr": ""
+		},
+		{
+			"label": "compile",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-m",
+				"compileall",
+				"-q",
+				"biomni",
+				"tutorials/benchmarks",
+				"tests"
+			],
+			"exit_code": 0,
+			"stdout": "",
+			"stderr": ""
+		},
+		{
+			"label": "dependency_consistency",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-m",
+				"pip",
+				"check"
+			],
+			"exit_code": 0,
+			"stdout": "No broken requirements found.\n",
+			"stderr": ""
+		},
+		{
+			"label": "diff",
+			"command": ["git", "diff", "--check"],
+			"exit_code": 0,
+			"stdout": "",
+			"stderr": ""
+		}
+	],
+	"root_pytest": [
+		{
+			"label": "feature_root_default",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-m",
+				"pytest",
+				"-q"
+			],
+			"cwd": "/workspace/scratch/7860330af65a/Biomni",
+			"exit_code": 1,
+			"stdout": "..................................F                                      [100%]\n=================================== FAILURES ===================================\n_______________________________ test_single_tool _______________________________\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\n=========================== short test summary info ============================\nFAILED tutorials/examples/expose_biomni_server/test_mcp_server.py::test_single_tool\n1 failed, 34 passed in 1.48s\n",
+			"stderr": ""
+		},
+		{
+			"label": "upstream_root_default",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-m",
+				"pytest",
+				"-q"
+			],
+			"cwd": "/workspace/scratch/7860330af65a/Biomni_upstream_audit",
+			"exit_code": 1,
+			"stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________________________ test_single_tool _______________________________\nasync def functions are not natively supported.\nYou need to install a suitable plugin for your async framework, for example:\n  - anyio\n  - pytest-asyncio\n  - pytest-tornasync\n  - pytest-trio\n  - pytest-twisted\n=========================== short test summary info ============================\nFAILED tutorials/examples/expose_biomni_server/test_mcp_server.py::test_single_tool\n1 failed in 0.40s\n",
+			"stderr": ""
+		},
+		{
+			"label": "feature_root_auto",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-m",
+				"pytest",
+				"-q",
+				"--asyncio-mode=auto"
+			],
+			"cwd": "/workspace/scratch/7860330af65a/Biomni",
+			"exit_code": 0,
+			"stdout": "...................................                                      [100%]\n35 passed in 1.43s\n",
+			"stderr": ""
+		},
+		{
+			"label": "upstream_root_auto",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-m",
+				"pytest",
+				"-q",
+				"--asyncio-mode=auto"
+			],
+			"cwd": "/workspace/scratch/7860330af65a/Biomni_upstream_audit",
+			"exit_code": 0,
+			"stdout": ".                                                                        [100%]\n1 passed in 0.40s\n",
+			"stderr": ""
+		},
+		{
+			"label": "a1_provider_preflight",
+			"command": [
+				"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+				"-c",
+				"from biomni.llm import get_llm; llm=get_llm(); llm.max_retries=0; llm.timeout=5; llm.invoke('Reply OK')"
+			],
+			"cwd": "/workspace/scratch/7860330af65a/Biomni",
+			"exit_code": 1,
+			"stdout": "",
+			"stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pydantic/main.py\", line 1111, in __setattr__\n    elif (setattr_handler := self._setattr_handler(name, value)) is not None:\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pydantic/main.py\", line 1158, in _setattr_handler\n    raise ValueError(f'\"{cls.__name__}\" object has no field \"{name}\"')\nValueError: \"ChatAnthropic\" object has no field \"timeout\"\n"
+		}
+	],
+	"provider_preflight": {
+		"hypothesis": "After installing SOCKS support, provider invocation can reach authentication.",
+		"command": [
+			"/workspace/scratch/7860330af65a/biomni_validation_r15/bin/python",
+			"-c",
+			"from biomni.agent.a1 import A1; from biomni.llm import get_llm; llm=get_llm(); llm.max_retries=0; llm.default_request_timeout=5; llm.invoke('Reply OK')"
+		],
+		"exit_code": 1,
+		"stdout": "",
+		"stderr": "Traceback (most recent call last):\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_anthropic/chat_models.py\", line 2176, in _create\n    return self._client.messages.with_raw_response.create(**payload)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_response.py\", line 797, in wrapped\n    return cast(APIResponse[R], func(*args, **kwargs))\n                                ^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_utils/_utils.py\", line 294, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/resources/messages/messages.py\", line 1073, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_base_client.py\", line 1676, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_base_client.py\", line 1227, in request\n    return self._request(cast_to, options, stream=stream, stream_cls=stream_cls)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_base_client.py\", line 1261, in _request\n    response, prepared = self._attempt_request(\n                         ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_base_client.py\", line 1416, in _attempt_request\n    request = self._build_request(options, retries_taken=retries_taken)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_base_client.py\", line 625, in _build_request\n    headers = self._build_headers(options, retries_taken=retries_taken)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_base_client.py\", line 570, in _build_headers\n    self._validate_headers(headers, omitted)\n  File \"/root/.local/lib/python3.12/site-packages/anthropic/_client.py\", line 437, in _validate_headers\n    raise TypeError(\nTypeError: \"Could not resolve authentication method. Expected one of api_key, auth_token, or credentials to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py\", line 488, in invoke\n    self.generate_prompt(\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py\", line 1877, in generate_prompt\n    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py\", line 1684, in generate\n    self._generate_with_cache(\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py\", line 2022, in _generate_with_cache\n    result = self._generate(\n             ^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_anthropic/chat_models.py\", line 2597, in _generate\n    raw_response = self._create(payload)\n                   ^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_anthropic/chat_models.py\", line 2178, in _create\n    _raise_if_authentication_error(e)\n  File \"/workspace/scratch/7860330af65a/biomni_validation_r15/lib/python3.12/site-packages/langchain_anthropic/chat_models.py\", line 1269, in _raise_if_authentication_error\n    raise TypeError(msg) from e\nTypeError: Anthropic authentication failed: no API key or authorization credentials were provided. Set the ANTHROPIC_API_KEY environment variable, pass api_key=... to ChatAnthropic, or provide credentials via default_headers={\"Authorization\": ...}. If you are routing through the LangSmith gateway, set LANGSMITH_GATEWAY and LANGSMITH_GATEWAY_API_KEY.\n",
+		"status": "environment_blocked",
+		"interpretation": "A provider preflight is not a scored Biomni run.",
+		"biological_error_mode": "No biological prediction was obtained.",
+		"uncertainty": "Agent metrics remain unmeasured.",
+		"principle": "Infrastructure failure must not be scored as model failure.",
+		"sources": [
+			"https://proceedings.mlr.press/v275/chevalley25a.html",
+			"https://doi.org/10.1038/s41592-019-0690-6"
+		],
+		"next_change": "Resolve the reported provider setup error without modifying the task or scoring."
+	},
+	"precommit_command": "PATH=/workspace/scratch/7860330af65a/biomni_npm_r16/node_modules/.bin:$PATH python -m pre_commit run --all-files",
+	"precommit_output": "[INFO] Installing environment for https://github.com/biomejs/pre-commit.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\nbiome format.............................................................Passed\nruff check...............................................................Passed\nruff format..............................................................Passed\ndetect private key.......................................................Passed\ncheck python ast.........................................................Passed\nfix end of files.........................................................Passed\nmixed line ending........................................................Passed\ntrim trailing whitespace.................................................Passed\ncheck for case conflicts.................................................Passed\ncheck for added large files..............................................Passed\ncheck toml...............................................................Passed\ncheck yaml...............................................................Passed\ncheck for merge conflicts................................................Passed\ndon't commit to branch...................................................Passed\n",
+	"note": "Async auto mode reports pass for the pre-existing MCP tutorial even when its internal connection fails. This is not evidence of a successful integration test. Earlier preflight timeout-field mistake and missing socksio diagnostics are retained in scratch audit_r19 and audit_r20, not counted as provider authentication evidence."
+}

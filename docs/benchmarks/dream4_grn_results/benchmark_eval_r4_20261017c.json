@@ -1,0 +1,33 @@
+{
+	"round": 4,
+	"environment": {
+		"python": "3.12.14",
+		"numpy": "2.3.4",
+		"sklearn": "1.8.0"
+	},
+	"git_sha": "528de05be101d33a7bb6460ce5de7be1f60c13b7",
+	"working_tree_dirty": false,
+	"source_sha256": {
+		"biomni/task/dream4_grn.py": "c9feb8cf54b87cd348543718fbf1b1b3964cbeefc0fdcea8f953171d84d3c857",
+		"tutorials/benchmarks/run_dream4_grn.py": "262fa0f6178f678e1c7cec9502b394564a655a442de90866a43e245d8b10877e",
+		"tests/fixtures/dream4_grn/chain.json": "417adb6dde093ce463c02cbe610c0437cc121b0d58d036af46b5fd90c8edf791"
+	},
+	"sources": {
+		"causalbench": "https://proceedings.mlr.press/v275/chevalley25a.html",
+		"beeline": "https://doi.org/10.1038/s41592-019-0690-6",
+		"systema": "https://doi.org/10.1038/s41587-025-02777-8"
+	},
+	"hypothesis": "Biomni can perform evidence-based direct GRN reconstruction through its normal agent loop.",
+	"status": "not_run",
+	"reason": "This baseline audit does not make live calls; run A1 in an isolated evidence-only environment.",
+	"runtime_available": true,
+	"provider_credentials_present": false,
+	"custom_endpoint_present": false,
+	"dataset_revision": "d901bd60f4c621ad2df0244931c60a9f3780fed8",
+	"dataset_sha256": "1dede2b7578c552da2521c2ca31ebbcdaa04245eb7e54084e217d46731a871b2",
+	"interpretation": "No agent-performance conclusion is possible. Missing runtime/access is an environment blocker.",
+	"biological_error_mode": "Not observed: no live biological inference was executed.",
+	"uncertainty": "Agent performance and variance are unmeasured.",
+	"principle": "Missing measurements cannot be imputed as failures or successes.",
+	"next_change": "Provision an isolated Biomni environment and run fixed-model repeated trials without changing scoring."
+}
