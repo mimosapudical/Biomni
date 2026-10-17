@@ -332,6 +332,12 @@ score = evaluator.evaluate('gwas_causal_gene_opentargets', 0, 'BRCA1')
 ```
 
 
+## Perturbational Gene Regulatory Network Benchmark
+
+The [DREAM4 direct-network reconstruction task](docs/benchmarks/dream4_grn.md)
+evaluates inference from simulated knockout/knockdown evidence, with pinned data,
+offline tests, precision-recall metrics, and direct-versus-indirect error diagnostics.
+
 ## 📚 Know-How Library
 
 Biomni includes a **Know-How Library** — a curated collection of best practices, protocols, and troubleshooting guides for biomedical techniques. These documents are automatically retrieved by the A1 agent when relevant to provide domain expertise and practical knowledge.
