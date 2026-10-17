@@ -1,0 +1,181 @@
+[
+	{
+		"command": ["python", "-m", "pytest", "tests", "-q"],
+		"exit_code": 0,
+		"stdout": "..................................                                       [100%]\n34 passed in 1.04s\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"compileall",
+			"-q",
+			"biomni",
+			"tutorials/benchmarks",
+			"tests"
+		],
+		"exit_code": 0,
+		"stdout": ""
+	},
+	{
+		"command": ["git", "diff", "--cached", "--check"],
+		"exit_code": 0,
+		"stdout": ""
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"ruff-check",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "ruff check...............................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"ruff-format",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "ruff format..............................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"detect-private-key",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\ndetect private key.......................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"check-ast",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "check python ast.........................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"end-of-file-fixer",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "fix end of files.........................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"mixed-line-ending",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "mixed line ending........................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"trailing-whitespace",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "trim trailing whitespace.................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"check-case-conflict",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "check for case conflicts.................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"check-added-large-files",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "check for added large files..............................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"check-toml",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "check toml...............................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"check-yaml",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "check yaml...............................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"check-merge-conflict",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "check for merge conflicts................................................Passed\n"
+	},
+	{
+		"command": [
+			"python",
+			"-m",
+			"pre_commit",
+			"run",
+			"no-commit-to-branch",
+			"--all-files"
+		],
+		"exit_code": 0,
+		"stdout": "don't commit to branch...................................................Passed\n"
+	}
+]

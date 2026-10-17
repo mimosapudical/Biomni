@@ -1,0 +1,101 @@
+{
+	"round": 3,
+	"environment": {
+		"python": "3.12.14",
+		"numpy": "2.3.4",
+		"sklearn": "1.8.0"
+	},
+	"git_sha": "ba11d1a7bb2e86afad227a63686b5f175472f588",
+	"working_tree_dirty": true,
+	"source_sha256": {
+		"biomni/task/dream4_grn.py": "c9feb8cf54b87cd348543718fbf1b1b3964cbeefc0fdcea8f953171d84d3c857",
+		"tutorials/benchmarks/run_dream4_grn.py": "262fa0f6178f678e1c7cec9502b394564a655a442de90866a43e245d8b10877e",
+		"tests/fixtures/dream4_grn/chain.json": "417adb6dde093ce463c02cbe610c0437cc121b0d58d036af46b5fd90c8edf791"
+	},
+	"sources": {
+		"mcz": "https://doi.org/10.1371/journal.pone.0013397",
+		"gnw": "https://doi.org/10.1093/bioinformatics/btr373",
+		"causalbench": "https://proceedings.mlr.press/v275/chevalley25a.html",
+		"systema": "https://doi.org/10.1038/s41587-025-02777-8"
+	},
+	"hypothesis": "The published MCZ core recovers direct edges above null but retains indirect-effect errors.",
+	"evaluation": {
+		"protocol": "dream4-direct-ko-kd-v1",
+		"dataset_revision": "d901bd60f4c621ad2df0244931c60a9f3780fed8",
+		"dataset_sha256": "1dede2b7578c552da2521c2ca31ebbcdaa04245eb7e54084e217d46731a871b2",
+		"split": "evaluation",
+		"network_ids": [1, 2, 3, 4, 5],
+		"macro_average_precision": 0.3582888775018058,
+		"valid_fraction": 1.0,
+		"networks": [
+			{
+				"network": "insilico_size100_1",
+				"valid": true,
+				"average_precision": 0.4876513620629756,
+				"auroc": 0.9080520081522755,
+				"positive_edges": 176,
+				"candidate_edges": 9900,
+				"prevalence": 0.017777777777777778,
+				"precision_at_n": 0.63,
+				"recall_at_n": 0.35795454545454547,
+				"indirect_fp_fraction": 1.0
+			},
+			{
+				"network": "insilico_size100_2",
+				"valid": true,
+				"average_precision": 0.38818273840568995,
+				"auroc": 0.7969725758281285,
+				"positive_edges": 249,
+				"candidate_edges": 9900,
+				"prevalence": 0.02515151515151515,
+				"precision_at_n": 0.72,
+				"recall_at_n": 0.2891566265060241,
+				"indirect_fp_fraction": 0.8571428571428571
+			},
+			{
+				"network": "insilico_size100_3",
+				"valid": true,
+				"average_precision": 0.37953194676831414,
+				"auroc": 0.8294260161957225,
+				"positive_edges": 195,
+				"candidate_edges": 9900,
+				"prevalence": 0.019696969696969695,
+				"precision_at_n": 0.6,
+				"recall_at_n": 0.3076923076923077,
+				"indirect_fp_fraction": 0.95
+			},
+			{
+				"network": "insilico_size100_4",
+				"valid": true,
+				"average_precision": 0.3661602986909084,
+				"auroc": 0.8422129654041643,
+				"positive_edges": 211,
+				"candidate_edges": 9900,
+				"prevalence": 0.02131313131313131,
+				"precision_at_n": 0.61,
+				"recall_at_n": 0.2890995260663507,
+				"indirect_fp_fraction": 0.9743589743589743
+			},
+			{
+				"network": "insilico_size100_5",
+				"valid": true,
+				"average_precision": 0.16991804158114115,
+				"auroc": 0.7652604738527987,
+				"positive_edges": 193,
+				"candidate_edges": 9900,
+				"prevalence": 0.019494949494949496,
+				"precision_at_n": 0.32,
+				"recall_at_n": 0.16580310880829016,
+				"indirect_fp_fraction": 0.9264705882352942
+			}
+		]
+	},
+	"descriptive_network_bootstrap_95_percent": [
+		0.25376360365601036, 0.4390549367141487
+	],
+	"interpretation": "Compare with R2 and per-network diagnostics; MCZ is not a uniquely identifying causal estimator.",
+	"biological_error_mode": "Knockout responses propagate through intermediates; inactive/weak regulators may be missed.",
+	"uncertainty": "Descriptive percentile bootstrap over five networks, seed=0, B=2000; no guaranteed coverage or human generalization.",
+	"principle": "Under a local linear approximation, total response includes B+B^2+...; direct adjacency is B alone.",
+	"next_change": "Freeze code/metric and run the agent when runtime access is available."
+}

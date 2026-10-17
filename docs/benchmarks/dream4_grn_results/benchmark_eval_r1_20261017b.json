@@ -1,0 +1,49 @@
+{
+	"round": 1,
+	"environment": {
+		"python": "3.12.14",
+		"numpy": "2.3.4",
+		"sklearn": "1.8.0"
+	},
+	"git_sha": "ba11d1a7bb2e86afad227a63686b5f175472f588",
+	"working_tree_dirty": true,
+	"source_sha256": {
+		"biomni/task/dream4_grn.py": "c9feb8cf54b87cd348543718fbf1b1b3964cbeefc0fdcea8f953171d84d3c857",
+		"tutorials/benchmarks/run_dream4_grn.py": "262fa0f6178f678e1c7cec9502b394564a655a442de90866a43e245d8b10877e",
+		"tests/fixtures/dream4_grn/chain.json": "417adb6dde093ce463c02cbe610c0437cc121b0d58d036af46b5fd90c8edf791"
+	},
+	"sources": {
+		"gnw": "https://doi.org/10.1093/bioinformatics/btr373",
+		"beeline": "https://doi.org/10.1038/s41592-019-0690-6",
+		"precision_recall": "https://doi.org/10.1371/journal.pone.0118432"
+	},
+	"hypothesis": "Hand-ranked direct edges at ranks 1 and 3 give AP=5/6; an indirect chain edge is false.",
+	"evaluation": {
+		"protocol": "dream4-direct-ko-kd-v1",
+		"dataset_revision": "custom:3c6995efd3ff638ca4b3ad7b5d84f42c2c01dee4c0541f9aec7df1d1fb74baa5",
+		"dataset_sha256": "3c6995efd3ff638ca4b3ad7b5d84f42c2c01dee4c0541f9aec7df1d1fb74baa5",
+		"split": "development",
+		"network_ids": [1],
+		"macro_average_precision": 0.8333333333333333,
+		"valid_fraction": 1.0,
+		"networks": [
+			{
+				"network": "insilico_size10_1",
+				"valid": true,
+				"average_precision": 0.8333333333333333,
+				"auroc": 0.9943181818181819,
+				"positive_edges": 2,
+				"candidate_edges": 90,
+				"prevalence": 0.022222222222222223,
+				"precision_at_n": 0.2,
+				"recall_at_n": 1.0,
+				"indirect_fp_fraction": 0.12499999999999997
+			}
+		]
+	},
+	"interpretation": "Supports metric/orientation sanity, not biological validity; one authored noiseless chain.",
+	"biological_error_mode": "G1 affects G3 through G2 without directly regulating G3.",
+	"uncertainty": "Exact finite example, no population confidence interval.",
+	"principle": "AP sums precision at positive recall increments; AUROC counts correctly ordered positive-negative pairs.",
+	"next_change": "Keep metric frozen; run constant/random baselines on all evaluation networks."
+}

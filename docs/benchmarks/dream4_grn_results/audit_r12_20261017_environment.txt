@@ -1,0 +1,76 @@
+audit_r3_20261017_pytest_repository.txt
+
+==================================== ERRORS ====================================
+_ ERROR collecting tutorials/examples/expose_biomni_server/test_mcp_server.py __
+ImportError while importing test module '/workspace/scratch/7860330af65a/Biomni/tutorials/examples/expose_biomni_server/test_mcp_server.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tutorials/examples/expose_biomni_server/test_mcp_server.py:10: in <module>
+    from mcp import ClientSession
+E   ModuleNotFoundError: No module named 'mcp'
+=========================== short test summary info ============================
+ERROR tutorials/examples/expose_biomni_server/test_mcp_server.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 1.07s
+
+
+audit_r4_20261017_pytest_upstream.txt
+
+==================================== ERRORS ====================================
+_ ERROR collecting tutorials/examples/expose_biomni_server/test_mcp_server.py __
+ImportError while importing test module '/workspace/scratch/7860330af65a/Biomni_upstream_audit/tutorials/examples/expose_biomni_server/test_mcp_server.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tutorials/examples/expose_biomni_server/test_mcp_server.py:10: in <module>
+    from mcp import ClientSession
+E   ModuleNotFoundError: No module named 'mcp'
+=========================== short test summary info ============================
+ERROR tutorials/examples/expose_biomni_server/test_mcp_server.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.12s
+
+
+audit_r5_20261017_precommit_upstream_reproduction.txt
+[INFO] Installing environment for https://github.com/biomejs/pre-commit.
+[INFO] Once installed this environment will be reused.
+[INFO] This may take a few minutes...
+An unexpected error has occurred: CalledProcessError: command: ('/root/.cache/pre-commit/repow6m9n6za/node_env-system/bin/node', '/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/npm', 'install', '--allow-git=root', '--install-links', '-g', 'git+file:///root/.cache/pre-commit/repow6m9n6za')
+return code: 1
+stdout: (none)
+stderr:
+    npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+    npm error code EALLOWGIT
+    npm error Fetching non-root packages from git has been disabled
+    npm error Refusing to fetch "@biomejs/pre-commit@git+file:///root/.cache/pre-commit/repow6m9n6za"
+    npm error A complete log of this run can be found in: /root/.npm/_logs/2026-10-17T09_51_58_933Z-debug-0.log
+Check the log at /root/.cache/pre-commit/pre-commit.log
+
+
+audit_r7_20261017_biome_registry.txt
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+Checked 5 files in 4ms. No fixes applied.
+
+
+audit_r10_20261017_feature_tests_on_upstream.txt
+
+==================================== ERRORS ====================================
+________ ERROR collecting upstream_regression_tests/test_dream4_grn.py _________
+ImportError while importing test module '/workspace/scratch/7860330af65a/upstream_regression_tests/test_dream4_grn.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../upstream_regression_tests/test_dream4_grn.py:12: in <module>
+    from biomni.task.dream4_grn import DATA_REVISION, DATA_SHA256, DATA_URL, _top_weights, dream4_grn
+E   ModuleNotFoundError: No module named 'biomni.task.dream4_grn'
+=========================== short test summary info ============================
+ERROR ../upstream_regression_tests/test_dream4_grn.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.13s
